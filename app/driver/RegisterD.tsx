@@ -1,0 +1,121 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, Image, SafeAreaView, KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
+import { Lock, Mail, EyeOff, Eye } from 'lucide-react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import styles from "../styles /RegisterDStyles"; // Importación corregida
+import { router } from 'expo-router';
+
+const RegisterD = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleLogin = () => {
+    console.log('Iniciando sesión con:', email);
+  };
+
+  return (
+    <LinearGradient
+      colors={['#6A0DAD', '#8A2BE2']}
+      style={styles.container}
+    >
+        <StatusBar barStyle="light-content" backgroundColor="#6A0DAD" />
+      <SafeAreaView style={styles.safeArea}>
+        <KeyboardAvoidingView 
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={styles.keyboardView}
+        >
+          <View style={styles.logoContainer}>
+            <Image 
+              source={require('../../assets/images/ubergirl-logo2.png')} 
+              style={styles.logo}
+              resizeMode="contain"
+            />
+            <Text style={styles.logoText}>Ubergirl</Text>
+          </View>
+
+          <View style={styles.inputContainer}>
+            <View style={styles.inputWrapper}>
+              <Mail color="#8A2BE2" size={24} style={styles.inputIcon} />
+              <TextInput
+                placeholder="Nombre completo"
+                placeholderTextColor="#999"
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                style={styles.input}
+              />
+            </View>
+
+            <View style={styles.inputWrapper}>
+              <Mail color="#8A2BE2" size={24} style={styles.inputIcon} />
+              <TextInput
+                placeholder="Correo electrónico"
+                placeholderTextColor="#999"
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                style={styles.input}
+              />
+            </View>
+
+            <View style={styles.inputWrapper}>
+              <Mail color="#8A2BE2" size={24} style={styles.inputIcon} />
+              <TextInput
+                placeholder="Numero de teléfono"
+                placeholderTextColor="#999"
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                style={styles.input}
+              />
+            </View>
+
+            <View style={styles.inputWrapper}>
+              <Lock color="#8A2BE2" size={24} style={styles.inputIcon} />
+              <TextInput
+                placeholder="Contraseña"
+                placeholderTextColor="#999"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry={!showPassword}
+                style={styles.input}
+              />
+              <TouchableOpacity 
+                onPress={() => setShowPassword(!showPassword)}
+                style={styles.passwordToggle}
+              >
+                {showPassword ? (
+                  <EyeOff color="#8A2BE2" size={24} />
+                ) : (
+                  <Eye color="#8A2BE2" size={24} />
+                )}
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <TouchableOpacity 
+            onPress={handleLogin}
+            style={styles.loginButton}
+          >
+            <Text style={styles.loginButtonText}>Registrarse</Text>
+          </TouchableOpacity>
+
+          <View style={styles.signupContainer}>
+            <Text style={styles.signupText}>¿Ya tienes cuenta? </Text>
+            <TouchableOpacity
+           onPress={() => router.push("/passenger/LoginP")}
+            >
+              <Text style={styles.signupLink}>Iniciar Sesión</Text>
+            </TouchableOpacity>
+          </View>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    </LinearGradient>
+  );
+};
+
+export default RegisterD;
