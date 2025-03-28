@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, SafeAreaView, KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
-import { Lock, Mail, EyeOff, Eye } from 'lucide-react-native';
+import { Lock, Mail, EyeOff, Eye, ChevronLeft} from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from "../styles /LoginDStyles"; // Importación corregida
 import { router } from 'expo-router';
@@ -21,6 +21,11 @@ const LoginD = () => {
     >
         <StatusBar barStyle="light-content" backgroundColor="#6A0DAD" />
       <SafeAreaView style={styles.safeArea}>
+      <View>
+    <TouchableOpacity onPress={() => router.push('/')}>
+      <ChevronLeft color="#8A2BE2" size={32} />
+    </TouchableOpacity>
+  </View>
         <KeyboardAvoidingView 
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={styles.keyboardView}

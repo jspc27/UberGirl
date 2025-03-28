@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, SafeAreaView, KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
-import { Lock, Mail, EyeOff, Eye } from 'lucide-react-native';
+import { Lock, Mail, EyeOff, Eye, Phone } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from "../styles /RegisterPStyles"; // Importación corregida
 import { router } from 'expo-router';
@@ -9,6 +9,7 @@ const RegisterP = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [phone, setPhone] = useState ('');
 
   const handleLogin = () => {
     console.log('Iniciando sesión con:', email);
@@ -62,17 +63,17 @@ const RegisterP = () => {
             </View>
 
             <View style={styles.inputWrapper}>
-              <Mail color="#FF1493" size={24} style={styles.inputIcon} />
-              <TextInput
-                placeholder="Numero de teléfono"
-                placeholderTextColor="#999"
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-                autoCapitalize="none"
-                style={styles.input}
-              />
-            </View>
+  <Phone color="#FF1493" size={24} style={styles.inputIcon} />
+  <TextInput
+    placeholder="Teléfono"
+    placeholderTextColor="#999"
+    value={phone}
+    onChangeText={setPhone}
+    keyboardType="phone-pad"
+    autoCapitalize="none"
+    style={styles.input}
+  />
+</View>
 
             <View style={styles.inputWrapper}>
               <Lock color="#FF1493" size={24} style={styles.inputIcon} />
