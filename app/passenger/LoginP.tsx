@@ -77,7 +77,7 @@ const LoginP = () => {
           </View>
 
           <TouchableOpacity 
-            onPress={handleLogin}
+            onPress={() => router.push("/passenger/HomeP")}
             style={styles.loginButton}
           >
             <Text style={styles.loginButtonText}>Iniciar Sesión</Text>
