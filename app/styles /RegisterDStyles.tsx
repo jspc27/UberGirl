@@ -88,6 +88,16 @@ const styles = StyleSheet.create({
       fontSize: 16,
       textDecorationLine: 'underline',
     },
+    toggleButton: {
+      marginVertical: 10,
+      alignItems: 'center',
+    },
+    toggleButtonText: {
+      color: 'white',
+      fontSize: 16,
+      fontWeight: 'bold',
+      textDecorationLine: 'underline',
+    },
   });
   
   export default styles;
