@@ -18,7 +18,7 @@ const HomeP = () => {
         latitudeDelta: 0.05,
         longitudeDelta: 0.05,
     });
-    
+
     useEffect(() => {
         const obtenerUbicacion = async () => {
             let { status } = await Location.requestForegroundPermissionsAsync();
@@ -26,15 +26,43 @@ const HomeP = () => {
                 Alert.alert("Permiso denegado", "No se pudo acceder a la ubicación");
                 return;
             }
-            let location = await Location.getCurrentPositionAsync({});
-            setRegion({
-                latitude: location.coords.latitude,
-                longitude: location.coords.longitude,
-                latitudeDelta: 0.05,
-                longitudeDelta: 0.05,
-            });
-            setUbicacion(`${location.coords.latitude}, ${location.coords.longitude}`);
+
+            await Location.watchPositionAsync(
+                {
+                    accuracy: Location.Accuracy.High,
+                    timeInterval: 5000,
+                    distanceInterval: 10,
+                },
+                async (location) => {
+                    const { latitude, longitude } = location.coords;
+                    setRegion((prev) => ({ ...prev, latitude, longitude }));
+                    await obtenerDireccion(latitude, longitude);
+                }
+            );
         };
+
+        const obtenerDireccion = async (lat: number, lng: number) => {
+            try {
+                let response = await fetch(
+                    `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`
+                );
+        
+                const textResponse = await response.text(); // Leer como texto en lugar de JSON
+                console.log(textResponse); // Verifica lo que está devolviendo el servidor
+        
+                let data = JSON.parse(textResponse); // Analizar el texto manualmente
+                console.log(data);
+        
+                if (data.address) {
+                    setUbicacion(data.address.road || "Ubicación no encontrada");
+                } else {
+                    setUbicacion("Ubicación no encontrada");
+                }
+            } catch (error) {
+                console.error("Error al obtener la dirección:", error);
+                setUbicacion("Error al obtener ubicación");
+            }
+        };        
 
         obtenerUbicacion();
     }, []);
@@ -45,74 +73,78 @@ const HomeP = () => {
             friction: 10,
             tension: 40,
             useNativeDriver: false,
-        }).start();
-        setSidebarOpen(!sidebarOpen);
+        }).start(() => {
+            if (sidebarOpen) {
+                setSidebarOpen(false);
+            }
+        });
+        if (!sidebarOpen) {
+            setSidebarOpen(true);
+        }
     };
 
     return (
         <LinearGradient colors={["#FF69B4", "#FF1493"]} style={styles.container}>
             <StatusBar barStyle="light-content" backgroundColor="#FF69B4" />
             
-            <TouchableOpacity
-    style={[
-        styles.menuButton,
-        { zIndex: sidebarOpen ? -1 : 10 } // Oculta detrás del sidebar cuando está abierto
-    ]}
-    onPress={toggleSidebar}
->
-    <MenuIcon size={28} color="#FF1493" />
-</TouchableOpacity>
-
-
-
-            <View style={{ flex: 1 }}>
+            {/* Mapa como fondo */}
+            <View style={styles.mapContainer}>
                 <MapView style={styles.map} region={region}>
                     <Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
                 </MapView>
             </View>
+            
+            {/* Botón de menú */}
+            {!sidebarOpen && (
+                <TouchableOpacity style={styles.menuButton} onPress={toggleSidebar}>
+                    <MenuIcon size={28} color="#FF1493" />
+                </TouchableOpacity>
+            )}
 
+            {/* Sidebar animado */}
             <Animated.View style={[styles.sidebar, { left: sidebarAnim }]}>
-    {/* Botón de cerrar en la esquina superior derecha del sidebar */}
-    <View style={styles.closeButtonContainer}>
-        <TouchableOpacity onPress={toggleSidebar}>
-            <X size={28} color="#FF1493" />
-        </TouchableOpacity>
-    </View>
+                <TouchableOpacity style={styles.closeButton} onPress={toggleSidebar}>
+                    <X size={28} color="#FF1493" />
+                </TouchableOpacity>
 
-    <View style={styles.profileContainer}>
-        <View style={styles.avatarContainer}>
-            <Image source={require("../../assets/images/profile-placeholder.png")} style={styles.avatar} />
-            <View style={styles.onlineIndicator} />
-        </View>
-        <Text style={styles.username}>María Rodríguez</Text>
-        <Text style={styles.userRole}>Pasajera</Text>
-    </View>
+                {/* Perfil */}
+                <View style={styles.profileContainer}>
+                    <View style={styles.avatarContainer}>
+                        <Image source={require("../../assets/images/profile-placeholder.png")} style={styles.avatar} />
+                    </View>
+                    <Text style={styles.username}>María Rodríguez</Text>
+                    <Text style={styles.userRole}>Pasajera</Text>
+                </View>
 
-    <View style={styles.menuSection}>
-        <TouchableOpacity onPress={() => router.push("/passenger/ProfileP")} style={styles.menuItem}>
-            <User size={22} color="#FF1493" />
-            <Text style={styles.menuText}>Mi Perfil</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem}>
-            <Map size={22} color="#FF1493" />
-            <Text style={styles.menuText}>Mis Viajes</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem}>
-            <Settings size={22} color="#FF1493" />
-            <Text style={styles.menuText}>Configuración</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem}>
-            <HelpCircle size={22} color="#FF1493" />
-            <Text style={styles.menuText}>Ayuda</Text>
-        </TouchableOpacity>
-    </View>
+                {/* Menú */}
+                <View style={styles.menuSection}>
+                    <TouchableOpacity onPress={() => router.push("/passenger/ProfileP")} style={styles.menuItem}>
+                        <User size={22} color="#FF1493" />
+                        <Text style={styles.menuText}>Mi Perfil</Text>
+                    </TouchableOpacity>
 
-    <TouchableOpacity style={styles.logoutButton}>
-        <LogOut size={22} color="#fff" />
-        <Text style={styles.logoutText}>Cerrar Sesión</Text>
-    </TouchableOpacity>
-</Animated.View>
+                    <TouchableOpacity style={styles.menuItem}>
+                        <Map size={22} color="#FF1493" />
+                        <Text style={styles.menuText}>Mis Viajes</Text>
+                    </TouchableOpacity>
 
+                    <TouchableOpacity style={styles.menuItem}>
+                        <Settings size={22} color="#FF1493" />
+                        <Text style={styles.menuText}>Configuración</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.menuItem}>
+                        <HelpCircle size={22} color="#FF1493" />
+                        <Text style={styles.menuText}>Ayuda</Text>
+                    </TouchableOpacity>
+                </View>
+
+                {/* Cerrar sesión */}
+                <TouchableOpacity style={styles.logoutButton}>
+                    <LogOut size={22} color="#fff" />
+                    <Text style={styles.logoutText}>Cerrar Sesión</Text>
+                </TouchableOpacity>
+            </Animated.View>
 
             <View style={styles.footer}>
                 <TextInput

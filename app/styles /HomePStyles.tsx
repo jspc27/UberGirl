@@ -58,17 +58,8 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
     },
-    onlineIndicator: {
-        position: "absolute",
-        bottom: 5,
-        right: 5,
-        width: 15,
-        height: 15,
-        borderRadius: 10,
-        backgroundColor: "green",
-        borderWidth: 2,
-        borderColor: "white",
-    },
+
+    
     username: {
         fontSize: 18,
         fontWeight: "bold",
@@ -95,10 +86,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         marginTop: 20,
-        paddingVertical: 10,
+        paddingVertical: 6,
         backgroundColor: "#FF1493",
         borderRadius: 8,
-        paddingHorizontal: 15,
+        paddingHorizontal: 8,
         justifyContent: "center",
     },
     logoutText: {
@@ -149,6 +140,23 @@ const styles = StyleSheet.create({
         alignItems: "flex-end",
         padding: 10,
     },
+    // Asegúrate de añadir esta definición de estilo
+mapContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+},
+mapOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.1)', // Ligeramente oscuro para indicar que el sidebar está activo
+    zIndex: 5, // Por encima del mapa pero por debajo del sidebar
+},
     
     
 });
