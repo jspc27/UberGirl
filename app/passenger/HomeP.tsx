@@ -44,13 +44,18 @@ const HomeP = () => {
         const obtenerDireccion = async (lat: number, lng: number) => {
             try {
                 let response = await fetch(
-                    `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`
+                    `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`, 
+                    {
+                        headers: {
+                            'User-Agent': 'UberGirl (prietojari27@gmail.com)' // Cambia esto por tu nombre de app y tu correo
+                        }
+                    }
                 );
         
-                const textResponse = await response.text(); // Leer como texto en lugar de JSON
-                console.log(textResponse); // Verifica lo que está devolviendo el servidor
+                const textResponse = await response.text();
+                console.log(textResponse); 
         
-                let data = JSON.parse(textResponse); // Analizar el texto manualmente
+                let data = JSON.parse(textResponse);
                 console.log(data);
         
                 if (data.address) {
@@ -62,7 +67,8 @@ const HomeP = () => {
                 console.error("Error al obtener la dirección:", error);
                 setUbicacion("Error al obtener ubicación");
             }
-        };        
+        };
+        
 
         obtenerUbicacion();
     }, []);
