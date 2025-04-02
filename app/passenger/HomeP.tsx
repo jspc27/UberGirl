@@ -130,7 +130,7 @@ const HomeP = () => {
                         <Text style={styles.menuText}>Mi Perfil</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.menuItem}>
+                    <TouchableOpacity onPress={() => router.push("/passenger/TripsP")} style={styles.menuItem}>
                         <Map size={22} color="#FF1493" />
                         <Text style={styles.menuText}>Mis Viajes</Text>
                     </TouchableOpacity>
