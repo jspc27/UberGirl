@@ -26,12 +26,13 @@ const HomeP = () => {
                 Alert.alert("Permiso denegado", "No se pudo acceder a la ubicación");
                 return;
             }
-
+            
+            {/* cambiar el tiempo*/}
             await Location.watchPositionAsync(
                 {
                     accuracy: Location.Accuracy.High,
-                    timeInterval: 5000,
-                    distanceInterval: 10,
+                    timeInterval: 200000,
+                    distanceInterval: 50,
                 },
                 async (location) => {
                     const { latitude, longitude } = location.coords;
