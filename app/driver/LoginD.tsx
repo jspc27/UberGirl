@@ -23,8 +23,8 @@ const LoginD = () => {
       <SafeAreaView style={styles.safeArea}>
       <View>
     <TouchableOpacity onPress={() => router.push('/')}>
-      <ChevronLeft color="#8A2BE2" size={32} />
-    </TouchableOpacity>
+          <ChevronLeft color="#fff" size={42} />
+        </TouchableOpacity>
   </View>
         <KeyboardAvoidingView 
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

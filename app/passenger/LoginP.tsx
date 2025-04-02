@@ -23,7 +23,7 @@ const LoginP = () => {
       <SafeAreaView style={styles.safeArea}>
       <View>
     <TouchableOpacity onPress={() => router.push('/')}>
-      <ChevronLeft color="#FF1493" size={32} />
+      <ChevronLeft color="#fff" size={42} />
     </TouchableOpacity>
   </View>
         <KeyboardAvoidingView 

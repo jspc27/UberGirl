@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, SafeAreaView, KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
-import { Lock, Mail, EyeOff, Eye, Car, Phone, Palette } from 'lucide-react-native';
+import { Lock, Mail, EyeOff, Eye, Car, Phone, Palette, ChevronLeft } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from "../styles /RegisterDStyles";
 import { router } from 'expo-router';
@@ -20,6 +20,9 @@ const RegisterD = () => {
     <LinearGradient colors={['#6A0DAD', '#8A2BE2']} style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#6A0DAD" />
       <SafeAreaView style={styles.safeArea}>
+      <TouchableOpacity onPress={() => router.push('./LoginD')}>
+      <ChevronLeft color="#fff" size={42} />
+    </TouchableOpacity>
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.keyboardView}>
           <View style={styles.logoContainer}>
             <Image source={require('../../assets/images/ubergirl-logo2.png')} style={styles.logo} resizeMode="contain" />

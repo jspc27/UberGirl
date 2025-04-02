@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, SafeAreaView, KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
-import { Lock, Mail, EyeOff, Eye, Phone } from 'lucide-react-native';
+import { Lock, Mail, EyeOff, Eye, Phone, ChevronLeft } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from "../styles /RegisterPStyles"; // Importación corregida
 import { router } from 'expo-router';
@@ -22,6 +22,9 @@ const RegisterP = () => {
     >
         <StatusBar barStyle="light-content" backgroundColor="#FF69B4" />
       <SafeAreaView style={styles.safeArea}>
+      <TouchableOpacity onPress={() => router.push('./LoginP')}>
+      <ChevronLeft color="#fff" size={42} />
+    </TouchableOpacity>
         <KeyboardAvoidingView 
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={styles.keyboardView}
