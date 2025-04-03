@@ -22,7 +22,7 @@ const RegisterP = () => {
     >
         <StatusBar barStyle="light-content" backgroundColor="#FF69B4" />
       <SafeAreaView style={styles.safeArea}>
-      <TouchableOpacity onPress={() => router.push('./LoginP')}>
+      <TouchableOpacity onPress={() => router.push('/')}>
       <ChevronLeft color="#fff" size={42} />
     </TouchableOpacity>
         <KeyboardAvoidingView 
@@ -111,7 +111,7 @@ const RegisterP = () => {
           <View style={styles.signupContainer}>
             <Text style={styles.signupText}>¿Ya tienes cuenta? </Text>
             <TouchableOpacity
-           onPress={() => router.push("/passenger/LoginP")}
+           onPress={() => router.push("/")}
             >
               <Text style={styles.signupLink}>Iniciar Sesión</Text>
             </TouchableOpacity>
