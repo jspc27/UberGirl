@@ -25,8 +25,8 @@ const RegisterD = () => {
     </TouchableOpacity>
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.keyboardView}>
           <View style={styles.logoContainer}>
-            <Image source={require('../../assets/images/ubergirl-logo2.png')} style={styles.logo} resizeMode="contain" />
-            <Text style={styles.logoText}>Ubergirl</Text>
+            <Image source={require('../../assets/images/LogoPink.png')} style={styles.logo} resizeMode="contain" />
+            <Text style={styles.logoText}>Conductora</Text>
           </View>
 
           {!isVehicleSection ? (

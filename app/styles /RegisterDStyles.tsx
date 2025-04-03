@@ -14,12 +14,12 @@ const styles = StyleSheet.create({
     },
     logoContainer: {
       alignItems: 'center',
-      marginBottom: 40,
+      marginBottom: 10, 
     },
     logo: {
-      width: 150,
-      height: 150,
-      marginBottom: 16,
+      width: 220, 
+      height: 220, 
+      marginBottom: -25, 
     },
     logoText: {
       fontSize: 32,
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.1,
       shadowRadius: 4,
       elevation: 3,
+      marginTop: -15,
     },
     loginButtonText: {
       color: '#8A2BE2',
@@ -97,6 +98,7 @@ const styles = StyleSheet.create({
       fontSize: 16,
       fontWeight: 'bold',
       textDecorationLine: 'underline',
+      marginTop: -30,
     },
   });
   
