@@ -14,12 +14,12 @@ const styles = StyleSheet.create({
     },
     logoContainer: {
       alignItems: 'center',
-      marginBottom: 40,
+      marginBottom: 10, 
     },
     logo: {
-      width: 150,
-      height: 150,
-      marginBottom: 16,
+      width: 220, 
+      height: 220, 
+      marginBottom: -25, 
     },
     logoText: {
       fontSize: 32,

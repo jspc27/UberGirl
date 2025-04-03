@@ -31,7 +31,7 @@ const RegisterP = () => {
         >
           <View style={styles.logoContainer}>
             <Image 
-              source={require('../../assets/images/ubergirl-logo.png')} 
+              source={require('../../assets/images/LogoPink.png')} 
               style={styles.logo}
               resizeMode="contain"
             />

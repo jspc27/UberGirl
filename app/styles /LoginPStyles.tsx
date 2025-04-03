@@ -11,15 +11,16 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       paddingHorizontal: 24,
+      marginTop: -20,
     },
     logoContainer: {
       alignItems: 'center',
-      marginBottom: 40,
+      marginBottom: 20,
     },
     logo: {
-      width: 150,
-      height: 150,
-      marginBottom: 16,
+      width: 220,
+      height: 220,
+      marginBottom: -20,
     },
     logoText: {
       fontSize: 32,

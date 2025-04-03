@@ -27,7 +27,6 @@ const HomeP = () => {
                 return;
             }
             
-            {/* cambiar el tiempo*/}
             await Location.watchPositionAsync(
                 {
                     accuracy: Location.Accuracy.High,
@@ -91,7 +90,7 @@ const HomeP = () => {
     };
 
     return (
-        <LinearGradient colors={["#FF69B4", "#FF1493"]} style={styles.container}>
+        <LinearGradient colors={['#CF5BA9', '#B33F8D']} style={styles.container}>
             <StatusBar barStyle="light-content" backgroundColor="#FF69B4" />
             
             {/* Mapa como fondo */}
@@ -147,7 +146,7 @@ const HomeP = () => {
                 </View>
 
                 {/* Cerrar sesión */}
-                <TouchableOpacity style={styles.logoutButton}>
+                <TouchableOpacity  onPress={() => router.push("/(tabs)")} style={styles.logoutButton}>
                     <LogOut size={22} color="#fff" />
                     <Text style={styles.logoutText}>Cerrar Sesión</Text>
                 </TouchableOpacity>

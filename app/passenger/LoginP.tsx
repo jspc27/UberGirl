@@ -32,11 +32,11 @@ const LoginP = () => {
         >
           <View style={styles.logoContainer}>
             <Image 
-              source={require('../../assets/images/ubergirl-logo.png')} 
+              source={require('../../assets/images/LogoPink.png')} 
               style={styles.logo}
               resizeMode="contain"
             />
-            <Text style={styles.logoText}>Ubergirl</Text>
+            <Text style={styles.logoText}>Pasajera(o)</Text>
           </View>
 
           <View style={styles.inputContainer}>
