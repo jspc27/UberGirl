@@ -10,10 +10,6 @@ const ProfileP = () => {
     name: "Maria Rodriguez",
     email: "maria.garcia@email.com",
     phone: "+34 612 345 678",
-    location: "Madrid, España",
-    memberSince: "Enero 2023",
-    rating: 4.8,
-    trips: 24
   });
 
   return (
@@ -22,7 +18,7 @@ const ProfileP = () => {
       
       {/* Header con gradiente */}
       <LinearGradient
-        colors={['#FF69B4', '#FF1493']}
+        colors={[' #FF69B4', '#FF1493']}
         style={styles.header}
       >
         <View style={styles.headerTop}>
@@ -33,10 +29,6 @@ const ProfileP = () => {
             <ChevronLeft color="white" size={28} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Mi Perfil</Text>
-          <TouchableOpacity style={styles.editButton} 
-          onPress={() => router.push('/passenger/EditProfileP')}>
-            <Edit2 color="white" size={20} />
-          </TouchableOpacity>
         </View>
         
         {/* Avatar y nombre */}
@@ -48,18 +40,21 @@ const ProfileP = () => {
             />
           </View>
           <Text style={styles.userName}>{user.name}</Text>
-          <View style={styles.ratingContainer}>
-            <Star fill="gold" color="gold" size={16} />
-            <Text style={styles.ratingText}>{user.rating}</Text>
-          </View>
         </View>
       </LinearGradient>
 
-      {/* Contenido del perfil */}
-      <ScrollView style={styles.profileContent}>
+       {/* Contenido del perfil */}
+       <ScrollView style={styles.profileContent}>
         {/* Sección de información */}
         <View style={styles.infoSection}>
-          <Text style={styles.sectionTitle}>Información de contacto</Text>
+          <View style={styles.sectionTitleRow}>
+            <Text style={styles.sectionTitle}>Información de contacto</Text>
+            <TouchableOpacity 
+              onPress={() => router.push('/passenger/EditProfileP')}
+            >
+              <Edit2 color="black" size={20} />
+            </TouchableOpacity>
+          </View>
           
           <View style={styles.infoItem}>
             <Phone size={20} color="#FF1493" />
@@ -72,37 +67,8 @@ const ProfileP = () => {
           </View>
         </View>
 
-        {/* Sección de estadísticas */}
-        <View style={styles.statsSection}>
-          <Text style={styles.sectionTitle}>Estadísticas</Text>
-          
-          <View style={styles.statsGrid}>
-            <View style={styles.statCard}>
-              <Star size={24} color="#FF1493" />
-              <Text style={styles.statValue}>{user.rating}</Text>
-              <Text style={styles.statLabel}>Puntaje</Text>
-            </View>
-            
-            <View style={styles.statCard}>
-              <Clock size={24} color="#FF1493" />
-              <Text style={styles.statValue}>{user.trips}</Text>
-              <Text style={styles.statLabel}>Viajes</Text>
-            </View>
-            
-            <View style={styles.statCard}>
-              <Shield size={24} color="#FF1493" />
-              <Text style={styles.statValue}>{user.memberSince}</Text>
-              <Text style={styles.statLabel}>Miembro desde</Text>
-            </View>
-          </View>
-        </View>
-
         {/* Opciones del perfil */}
         <View style={styles.optionsSection}>
-          <TouchableOpacity style={styles.optionItem}>
-            <Text style={styles.optionText}>Historial de viajes</Text>
-          </TouchableOpacity>
-          
           <TouchableOpacity style={styles.optionItem}>
             <Text style={styles.optionText}>Ayuda y soporte</Text>
           </TouchableOpacity>

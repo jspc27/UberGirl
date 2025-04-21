@@ -130,15 +130,6 @@ const EditProfileP = () => {
             </View>
           </View>
         </View>
-
-        {/* Botón principal para guardar 
-        <TouchableOpacity 
-          style={styles.saveButtonLarge}
-          onPress={handleSave}
-        >
-          <Text style={styles.saveButtonText}>Guardar cambios</Text>
-        </TouchableOpacity>
-        */}
       </ScrollView>
     </KeyboardAvoidingView>
   );
