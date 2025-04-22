@@ -18,7 +18,7 @@ const ProfileP = () => {
       
       {/* Header con gradiente */}
       <LinearGradient
-        colors={[' #FF69B4', '#FF1493']}
+        colors={['#FF69B4', '#FF1493']}
         style={styles.header}
       >
         <View style={styles.headerTop}>
@@ -52,7 +52,7 @@ const ProfileP = () => {
             <TouchableOpacity 
               onPress={() => router.push('/passenger/EditProfileP')}
             >
-              <Edit2 color="black" size={20} />
+              <Edit2 color="#FF1493" size={20} />
             </TouchableOpacity>
           </View>
           
@@ -77,7 +77,8 @@ const ProfileP = () => {
             <Text style={styles.optionText}>Cambiar contraseña</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={[styles.optionItem, styles.logoutButton]}>
+          <TouchableOpacity style={[styles.optionItem, styles.logoutButton]} 
+          onPress={() => router.push('/')}>
             <Text style={styles.logoutText}>Cerrar sesión</Text>
           </TouchableOpacity>
         </View>

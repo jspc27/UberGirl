@@ -189,19 +189,19 @@ const styles = StyleSheet.create({
         zIndex: 10,
     },
     avatarSmall: {
-        width: 45,
-        height: 45,
-        borderRadius: 23,
+        width: 50,
+        height: 50,
+        borderRadius: 30,
         borderWidth: 2,
-        borderColor: "#FF1493",
+        borderColor: "#B33F8D",
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
-        shadowRadius: 3,
-        elevation: 5,
+        shadowRadius: 5,
+        elevation: 8,
     },
     avatarButtonContainer: {
-        shadowColor: "#FF1493",
+        shadowColor: "#B33F8D",
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.3,
         shadowRadius: 4,
@@ -269,6 +269,220 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    // Para las sugerencias de direcciones
+searchContainer: {
+    width: '100%',
+    position: 'relative',
+},
+searchingIndicator: {
+    position: 'absolute',
+    right: 15,
+    top: 15,
+},
+suggestionsContainer: {
+    width: '100%',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    maxHeight: 200,
+    marginBottom: 12,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 3,
+    elevation: 3,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: '#f0f0f0',
+},
+suggestionsList: {
+    width: '100%',
+    maxHeight: 200,
+},
+suggestionItem: {
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f5f5f5',
+},
+suggestionText: {
+    fontSize: 15,
+    color: '#333',
+    marginBottom: 2,
+},
+suggestionSubtext: {
+    fontSize: 13,
+    color: '#888',
+},
+noSuggestionsContainer: {
+    padding: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+},
+noSuggestionsText: {
+    color: '#888',
+    marginLeft: 10,
+},
+
+// Para la selección de vehículos
+vehicleSelectionContainer: {
+    width: '100%',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 15,
+    marginBottom: 12,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 3,
+    elevation: 3,
+    borderWidth: 1,
+    borderColor: '#f0f0f0',
+},
+sectionTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#333',
+    marginBottom: 15,
+},
+vehicleOptions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 15,
+},
+vehicleOption: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f9f9f9',
+    paddingVertical: 12,
+    marginHorizontal: 4,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#eee',
+},
+selectedVehicleOption: {
+    backgroundColor: '#FF1493',
+    borderColor: '#FF1493',
+},
+vehicleText: {
+    marginTop: 5,
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#333',
+},
+selectedVehicleText: {
+    color: '#fff',
+},
+
+// Para la estimación de precios
+priceEstimateContainer: {
+    backgroundColor: '#f9f9f9',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#eee',
+},
+priceEstimateLabel: {
+    fontSize: 14,
+    color: '#555',
+    marginBottom: 5,
+},
+priceEstimateValue: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#FF1493',
+    marginBottom: 5,
+},
+distanceText: {
+    fontSize: 14,
+    color: '#777',
+},
+
+// Botón desactivado
+buttonDisabled: {
+    backgroundColor: "#ffb6c1",
+    shadowOpacity: 0.1,
+},
+
+// Botón de prueba
+testButton: {
+    position: "absolute",
+    bottom: 100,
+    left: "10%",
+    right: "10%",
+    backgroundColor: "#FF1493",
+    paddingVertical: 12,
+    borderRadius: 12,
+    alignItems: "center",
+    shadowColor: "#FF1493",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 6,
+},
+testButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "700",
+},
+
+// Modal de conductora
+modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+},
+driverModalContainer: {
+    width: "80%",
+    backgroundColor: "#fff",
+    borderRadius: 16,
+    padding: 20,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 10,
+},
+driverProfilePicture: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 15,
+    borderWidth: 2,
+    borderColor: "#FF1493",
+},
+driverName: {
+    fontSize: 20,
+    fontWeight: "700",
+    color: "#333",
+    marginBottom: 10,
+},
+driverVehicle: {
+    fontSize: 16,
+    color: "#555",
+    marginBottom: 5,
+},
+driverLicensePlate: {
+    fontSize: 16,
+    color: "#FF1493",
+    fontWeight: "600",
+    marginBottom: 20,
+},
+closeModalButton: {
+    backgroundColor: "#FF1493",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+},
+closeModalButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "600",
+},
 });
 
 export default styles;
